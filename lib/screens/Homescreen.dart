@@ -29,7 +29,34 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         children: [
           Row(
-            children: [HomeMeetingButton(onPressed: () {})],
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              HomeMeetingButton(
+                onPressed: () {},
+                text: 'New Meeting',
+                icon: Icons.videocam,
+              ),
+              HomeMeetingButton(
+                  onPressed: () {},
+                  text: 'Join Meeting',
+                  icon: Icons.add_box_rounded),
+              HomeMeetingButton(
+                  onPressed: () {},
+                  text: 'Schedule Meeting',
+                  icon: Icons.calendar_today),
+              HomeMeetingButton(
+                  onPressed: () {},
+                  text: 'Share Screen',
+                  icon: Icons.arrow_upward_rounded),
+            ],
+          ),
+          const Expanded(
+            child: Center(
+              child: Text(
+                "Create Or Join Meeting with just a click !",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
+            ),
           )
         ],
       ),

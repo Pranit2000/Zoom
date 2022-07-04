@@ -3,7 +3,9 @@ import 'package:zoom/utils/colors.dart';
 
 class HomeMeetingButton extends StatelessWidget {
   final VoidCallback onPressed;
-  const HomeMeetingButton({Key? key, required this.onPressed})
+  final IconData icon;
+  final String text;
+  const HomeMeetingButton({Key? key, required this.onPressed,required this.icon,required this.text})
       : super(key: key);
 
   @override
@@ -23,10 +25,16 @@ class HomeMeetingButton extends StatelessWidget {
                     offset: const Offset(0, 4),
                   ),
                 ]),
-                height: 60,
-                width: 60,
-                
+            height: 60,
+            width: 60,
+            child: Icon(
+              icon,
+              color: Colors.white,
+              size: 30,
+            ),
           ),
+          const SizedBox(height: 10,),
+          Text(text,style: TextStyle(color: Colors.grey),)
         ],
       ),
     );

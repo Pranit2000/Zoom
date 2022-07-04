@@ -5,8 +5,7 @@ import 'package:zoom/screens/Homescreen.dart';
 import 'package:zoom/screens/Loginscreen.dart';
 import 'package:zoom/utils/colors.dart';
 
-
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
@@ -19,30 +18,28 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Zoom',
-      theme: ThemeData.dark().copyWith(
-       scaffoldBackgroundColor: backgroundColor,
-      ),
-      routes: {
-        '/login':(context)=>const LoginScreen(),
-        '/home':(context) =>const HomeScreen()
-      },
-      debugShowCheckedModeBanner: false,
-      home:StreamBuilder(
-        stream: Authmethod().authChanges,
-        builder: (context , snapshot){
-          if(snapshot.connectionState==ConnectionState.waiting){
-            return const Center(child: CircularProgressIndicator(),);
-            
-          }
-          if(snapshot.hasData){
-            return const HomeScreen();
-          }
-          return LoginScreen();
+        title: 'Zoom',
+        theme: ThemeData.dark().copyWith(
+          scaffoldBackgroundColor: backgroundColor,
+        ),
+        routes: {
+          '/login': (context) => const LoginScreen(),
+          '/home': (context) => const HomeScreen()
         },
-      )
-      
-    );
+        debugShowCheckedModeBanner: false,
+        home: StreamBuilder(
+          stream: Authmethod().authChanges,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            if (snapshot.hasData) {
+              return const HomeScreen();
+            }
+            return LoginScreen();
+          },
+        ));
   }
 }
-
