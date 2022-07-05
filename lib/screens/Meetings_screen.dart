@@ -15,12 +15,16 @@ class _MeetingScreenState extends State<MeetingScreen> {
   final JitsiMeetMethoods _jitsiMeetMethoods = JitsiMeetMethoods();
   createNewMeeting() async {
     var random = Random();
-    String roomName = (random.nextInt(10000000) + 10000000).toString();
+    String roomName = (random.nextInt(10000000) +  10000000).toString();
     _jitsiMeetMethoods.createMeeting(
       roomName: roomName,
       isAudioMuted: true,
       isVideoMuted: true,
     );
+  }
+
+  joinMeeting(BuildContext context){
+    Navigator.pushNamed(context, '/video-call');
   }
 
   @override
@@ -36,7 +40,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
               icon: Icons.videocam,
             ),
             HomeMeetingButton(
-                onPressed: () {},
+                onPressed: ()=>joinMeeting(context),
                 text: 'Join Meeting',
                 icon: Icons.add_box_rounded),
             HomeMeetingButton(
