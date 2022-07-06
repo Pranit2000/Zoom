@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zoom/resources/auth_methods.dart';
 import 'package:zoom/screens/History_Meeting_screen.dart';
 import 'package:zoom/screens/Meetings_screen.dart';
 import 'package:zoom/utils/colors.dart';
+import 'package:zoom/widgets/custombutton.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -9,7 +11,6 @@ class HomeScreen extends StatefulWidget {
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
-
 
 class _HomeScreenState extends State<HomeScreen> {
   int _page = 0;
@@ -19,11 +20,11 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  List<Widget> pages=[
+  List<Widget> pages = [
     MeetingScreen(),
     const HistoryMeetingSceen(),
     const Text("Contacts"),
-    const Text("Settings"),
+    CustomButton(text: 'Log Out', onPressed: () => Authmethod().signOut()),
   ];
 
   @override
@@ -54,9 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 icon: Icon(Icons.person_outline), label: 'Contacts'),
             BottomNavigationBarItem(
                 icon: Icon(Icons.settings_outlined), label: 'Settings'),
-            
           ]),
     );
   }
 }
-
